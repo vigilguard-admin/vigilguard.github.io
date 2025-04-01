@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VigilGuard - IT & Security amped up !!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 98vh;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            color: black;
+        }
+        header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+        }
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-top: 1px solid #e9ecef;
+        }
+        .disclaimer {
+            max-width: 1200px;
+	    font-size: 1.2rem;
+            margin: 0 auto;
+        }
+        .footer-links {
+            margin-top: 1rem;
+        }
+        .footer-links a {
+            margin: 0 10px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VigilGuard.com</h1>
+    </header>
+    <main>
+        <!-- Main content would go here -->
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a onclick="document.getElementById('copyrightModal').style.display='block'">Copyright Notice</a>
+            <a onclick="document.getElementById('cookieModal').style.display='block'">Cookie Notice</a>
+            <a onclick="document.getElementById('privacyModal').style.display='block'">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- Copyright Modal -->
+    <div id="copyrightModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('copyrightModal').style.display='none'">&times;</span>
+            <h2>Copyright Notice</h2>
+            <p>© 2025 VigilGuard.com. All rights reserved.</p>
+            <p>All content on this website, including text, graphics, logos, and images, is the property of VigilGuard.com and is protected by copyright laws.</p>
+            <p>Unauthorized use of any materials on this website may violate copyright, trademark, and other laws.</p>
+        </div>
+    </div>
+
+    <!-- Cookie Modal -->
+    <div id="cookieModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('cookieModal').style.display='none'">&times;</span>
+            <h2>Cookie Notice</h2>
+            <p>VigilGuard.com does not use tracking cookies.</p>
+            <p>We respect your privacy and do not collect personal information through cookies or similar technologies.</p>
+            <p>This website functions without the need to track or store information about your browsing activity.</p>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('privacyModal').style.display='none'">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>At VigilGuard.com, we are committed to protecting your privacy.</p>
+            <p>We do not collect personal information from visitors to our website unless specifically provided through contact forms or other explicit means.</p>
+            <p>Any information voluntarily submitted will be used only for the purpose for which it was provided and will not be shared with third parties without your consent.</p>
+            <p>We do not use tracking technologies to monitor browsing behavior or collect personal information.</p>
+		<p>            My statements and opinions on this website are entirely my own and do not represent those of Synopsys, Inc. I am fully and solely responsible for the statements and content contained herein, as well as the operation of this website, unless otherwise indicated. This website is unaffiliated with Synopsys, Inc.
+</p>
+        </div>
+    </div>
+
+    <script>
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

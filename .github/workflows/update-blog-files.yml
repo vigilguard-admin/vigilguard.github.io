@@ -1,0 +1,78 @@
+name: Update Blog Files JSON
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Create blog-files.json
+        run: |
+          python -c '
+          import os
+          import json
+          import re
+          from datetime import datetime
+          
+          # Path to your articles directory
+          articles_dir = "articles"
+          
+          # Get all HTML files from the articles directory
+          html_files = []
+          if os.path.exists(articles_dir):
+              for file in os.listdir(articles_dir):
+                  if file.endswith(".html"):
+                      # Add the file path
+                      file_path = os.path.join(articles_dir, file)
+                      html_files.append(file_path)
+          
+          # Sort files by date in the filename (newest first)
+          # Assuming filename format includes YYYY-MM-DD
+          def extract_date(filename):
+              match = re.search(r"(\d{4}-\d{2}-\d{2})", filename)
+              if match:
+                  try:
+                      date_str = match.group(1)
+                      return datetime.strptime(date_str, "%Y-%m-%d")
+                  except ValueError:
+                      return datetime.min
+              return datetime.min
+          
+          # Sort files by date (newest first)
+          html_files.sort(key=extract_date, reverse=True)
+          
+          # Write files to blog-files.json
+          with open("blog-files.json", "w") as f:
+              json.dump(html_files, f, indent=2)
+          
+          print(f"Updated blog-files.json with {len(html_files)} articles")
+          '
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet blog-files.json || echo "changes=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add blog-files.json
+          git commit -m "Auto-update blog-files.json"
+          git push

@@ -1,378 +1,339 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>VigilGuard - IT + Security Amped !!</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-		<style>
-			/* Reset and Base Styles */
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-
-			body {
-				font-family: "Poppins", sans-serif;
-				background: #000;
-				color: #fff;
-				overflow-x: hidden;
-				min-height: 100vh;
-			}
-
-			p {
-				font-size: smaller;
-				margin-bottom: 10px;
-			}
-
-			a {
-				text-decoration: none;
-				color: inherit;
-			}
-
-			/* Container Styles */
-			.container {
-				width: 100%;
-				position: relative;
-				overflow: hidden;
-				height: 100vh;
-			}
-
-			/* Animation Container */
-			.sp-container {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 0;
-				background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
-			}
-
-			.sp-content {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				left: 0;
-				top: 0;
-				z-index: 1000;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-			}
-
-			/* Text Animation Styles */
-			.sp-container h2 {
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				width: 100%;
-				text-align: center;
-				color: transparent;
-				font-size: clamp(40px, 8vw, 90px);
-				line-height: 1.2;
-				animation: blurFadeInOut 3s ease-in backwards;
-			}
-
-			@media (max-width: 768px) {
-				.sp-container h2 {
-					padding: 0 20px;
-				}
-			}
-
-			.sp-container h2.frame-1 {
-				animation-delay: 0s;
-			}
-
-			.sp-container h2.frame-2 {
-				animation-delay: 3s;
-			}
-
-			.sp-container h2.frame-3 {
-				animation-delay: 6s;
-			}
-
-			.sp-container h2.frame-4 {
-				font-size: clamp(50px, 10vw, 200px);
-				animation-delay: 9s;
-			}
-
-			.sp-container h2.frame-5 {
-				animation: none;
-				color: transparent;
-				text-shadow: 0px 0px 1px #fff;
-			}
-
-			.sp-container h2.frame-5 span {
-				animation: blurFadeIn 3s ease-in 12s backwards;
-				color: transparent;
-				text-shadow: 0px 0px 1px #fff;
-				display: inline-block;
-				margin: 0 10px;
-			}
-
-			.sp-container h2.frame-5 span:nth-child(2) {
-				animation-delay: 13s;
-			}
-
-			.sp-container h2.frame-5 span:nth-child(3) {
-				animation-delay: 14s;
-			}
-
-			.sp-container h2.frame-6 {
-				animation: none;
-				color: transparent;
-				text-shadow: 0px 0px 1px #fff;
-			}
-
-			.sp-container h2.frame-6 span {
-				animation: blurFadeIn 3s ease-in 15s backwards;
-				color: transparent;
-				text-shadow: 0px 0px 1px #fff;
-				display: inline-block;
-				margin-top: 200px;
-			}
-			/* Call to Action Button */
-			.sp-circle-link {
-				position: absolute;
-				bottom: 15%;
-				left: 50%;
-				transform: translateX(-50%);
-				text-align: center;
-				line-height: 1;
-				width: 200px;
-				padding: 20px 0;
-				background: #fff;
-				color: #000;
-				font-size: clamp(16px, 5vw, 25px);
-				border-radius: 50px;
-				animation: fadeInRotate 1s linear 16s backwards;
-				transition: all 0.3s ease;
-			}
-
-			.sp-circle-link:hover {
-				background: #85373b;
-				color: #fff;
-				transform: translateX(-50%) scale(1.05);
-			}
-
-			@media (max-width: 480px) {
-				.sp-circle-link {
-					width: 160px;
-					font-size: 18px;
-					bottom: 10%;
-				}
-			}
-
-			/* Animations */
-			@keyframes blurFadeInOut {
-				0% {
-					opacity: 0;
-					text-shadow: 0px 0px 40px #fff;
-					transform: translateY(-50%) scale(1.3);
-				}
-				20%,
-				75% {
-					opacity: 1;
-					text-shadow: 0px 0px 1px #fff;
-					transform: translateY(-50%) scale(1);
-				}
-				100% {
-					opacity: 0;
-					text-shadow: 0px 0px 50px #fff;
-					transform: translateY(-50%) scale(0);
-				}
-			}
-
-			@keyframes blurFadeIn {
-				0% {
-					opacity: 0;
-					text-shadow: 0px 0px 40px #fff;
-					transform: scale(1.3);
-				}
-				50% {
-					opacity: 0.5;
-					text-shadow: 0px 0px 10px #fff;
-					transform: scale(1.1);
-				}
-				100% {
-					opacity: 1;
-					text-shadow: 0px 0px 1px #fff;
-					transform: scale(1);
-				}
-			}
-
-			@keyframes fadeInRotate {
-				0% {
-					opacity: 0;
-					transform: translateX(-50%) scale(0) rotate(360deg);
-				}
-				100% {
-					opacity: 1;
-					transform: translateX(-50%) scale(1) rotate(0deg);
-				}
-			}
-
-			/* Footer Styles */
-			footer {
-				position: fixed;
-				bottom: 0;
-				width: 100%;
-				padding: 1rem;
-				text-align: center;
-				font-size: 0.9rem;
-				line-height: 1.5;
-				background-color: rgba(0, 0, 0, 0.7);
-				z-index: 1001;
-			}
-
-			.disclaimer {
-				max-width: 1200px;
-				font-size: 1rem;
-				margin: 0 auto;
-			}
-
-			.footer-links {
-				margin-top: 0.5rem;
-			}
-
-			.footer-links a {
-				margin: 0 10px;
-				cursor: pointer;
-			}
-
-			/* Modal Styles */
-			.modal {
-				display: none;
-				position: fixed;
-				z-index: 1002;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				overflow: auto;
-				background-color: rgba(0, 0, 0, 0.7);
-			}
-
-			.modal-content {
-				background-color: #222;
-				color: #fff;
-				margin: 10% auto;
-				padding: 20px;
-				border: 1px solid #444;
-				border-radius: 8px;
-				width: 90%;
-				max-width: 600px;
-				position: relative;
-			}
-
-			@media (max-width: 768px) {
-				.modal-content {
-					margin: 20% auto;
-					width: 95%;
-					padding: 15px;
-				}
-			}
-
-			.close {
-				position: absolute;
-				right: 15px;
-				top: 10px;
-				color: #aaa;
-				font-size: 28px;
-				font-weight: bold;
-				cursor: pointer;
-				transition: all 0.2s ease;
-			}
-			ffram .close:hover {
-				color: #fff;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="sp-container">
-				<div class="sp-content">
-					<h2 class="frame-1">Stay Vigilant</h2>
-					<h2 class="frame-2">Stay Guarded</h2>
-					<h2 class="frame-3">Enterprise Threat Visibility, Simplified</h2>
-					<h2 class="frame-4">VigilGuard</h2>
-					<h2 class="frame-5">
-						<span>Secure.</span>
-						<span>Monitor.</span>
-						<span>Trust.</span>
-					</h2>
-					<h2 class="frame-6">
-						<span>VigilGuard.</span>
-					</h2>
-
-					<!-- <a class="sp-circle-link" href="#join">Join us!</a> -->
-				</div>
-			</div>
-		</div>
-
-		<footer>
-			<div class="footer-links">
-				<a href="#" onclick="openModal('privacy')">Privacy</a>
-				| <a href="#" onclick="openModal('contact')">Copyright</a>
-				<!-- | <a href="/blog">Blog</a> -->
-			</div>
-		</footer>
-
-		<!-- Modal windows -->
-
-		<div id="privacyModal" class="modal">
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('privacy')">&times;</span>
-				<h3>Privacy Policy</h3>
-				<br />
-				<p>
- 					VigilGuard respects your privacy and does not collect personal information through cookies or similar technologies.  
-					This website operates without tracking or storing any data related to your browsing activity.
-				</p>
-				<p>
-					This page is hosted via <a href="https://docs.github.com/en/site-policy"><u>GitHub Pages</u></a>, which is governed by its own site policy.
-				</p>
-			</div>
-		</div>
-
-		<div id="contactModal" class="modal">
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('contact')">&times;</span>
-				<h3>Copyright Notice</h3>
-				<br />
-				<p>© 2025 VigilGuard. All rights reserved.</p>
-				<p>
-  					All content on this website—including text, graphics, logos, and images—is the property of VigilGuard LLC and is protected by copyright and other intellectual property laws.
-					Unauthorized use of any materials on this site may violate copyright, trademark, and other applicable laws.
-				</p>
-				<p>
-  					The views and opinions expressed on this website are solely my own and do not reflect those of Synopsys, Inc. 
-					I am entirely responsible for the content and operation of this website unless otherwise stated. This site is not affiliated with or endorsed by Synopsys, Inc.
-				</p>
-			</div>
-		</div>
-
-		<script>
-			// Modal functionality
-			function openModal(type) {
-				document.getElementById(type + "Modal").style.display = "block";
-			}
-
-			function closeModal(type) {
-				document.getElementById(type + "Modal").style.display = "none";
-			}
-
-			// Close modal when clicking outside of it
-			window.onclick = function (event) {
-				if (event.target.classList.contains("modal")) {
-					event.target.style.display = "none";
-				}
-			};
-		</script>
-	</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>VigilGuard - IT + Security Amped !!</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+      <style>
+         /* Reset and Base Styles */
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         }
+         body {
+         font-family: "Poppins", sans-serif;
+         background: #000;
+         color: #fff;
+         overflow-x: hidden;
+         min-height: 100vh;
+         }
+         p {
+         font-size: smaller;
+         margin-bottom: 10px;
+         }
+         a {
+         text-decoration: none;
+         color: inherit;
+         }
+         /* Container Styles */
+         .container {
+         width: 100%;
+         position: relative;
+         overflow: hidden;
+         height: 100vh;
+         }
+         /* Animation Container */
+         .sp-container {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         z-index: 0;
+         background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+         }
+         .sp-content {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         left: 0;
+         top: 0;
+         z-index: 1000;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         }
+         /* Text Animation Styles */
+         .sp-container h2 {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         width: 100%;
+         text-align: center;
+         color: transparent;
+         font-size: clamp(40px, 8vw, 90px);
+         line-height: 1.2;
+         animation: blurFadeInOut 3s ease-in backwards;
+         }
+         @media (max-width: 768px) {
+         .sp-container h2 {
+         padding: 0 20px;
+         }
+         }
+         .sp-container h2.frame-1 {
+         animation-delay: 0s;
+         }
+         .sp-container h2.frame-2 {
+         animation-delay: 3s;
+         }
+         .sp-container h2.frame-3 {
+         animation-delay: 6s;
+         }
+         .sp-container h2.frame-4 {
+         font-size: clamp(50px, 10vw, 200px);
+         animation-delay: 9s;
+         }
+         .sp-container h2.frame-5 {
+         animation: none;
+         color: transparent;
+         text-shadow: 0px 0px 1px #fff;
+         }
+         .sp-container h2.frame-5 span {
+         animation: blurFadeIn 3s ease-in 12s backwards;
+         color: transparent;
+         text-shadow: 0px 0px 1px #fff;
+         display: inline-block;
+         margin: 0 10px;
+         }
+         .sp-container h2.frame-5 span:nth-child(2) {
+         animation-delay: 13s;
+         }
+         .sp-container h2.frame-5 span:nth-child(3) {
+         animation-delay: 14s;
+         }
+         .sp-container h2.frame-6 {
+         animation: none;
+         color: transparent;
+         text-shadow: 0px 0px 1px #fff;
+         }
+         .sp-container h2.frame-6 span {
+         animation: blurFadeIn 3s ease-in 15s backwards;
+         color: transparent;
+         text-shadow: 0px 0px 1px #fff;
+         display: inline-block;
+         margin-top: 200px;
+         }
+         /* Call to Action Button */
+         .sp-circle-link {
+         position: absolute;
+         bottom: 15%;
+         left: 50%;
+         transform: translateX(-50%);
+         text-align: center;
+         line-height: 1;
+         width: 200px;
+         padding: 20px 0;
+         background: #fff;
+         color: #000;
+         font-size: clamp(16px, 5vw, 25px);
+         border-radius: 50px;
+         animation: fadeInRotate 1s linear 16s backwards;
+         transition: all 0.3s ease;
+         }
+         .sp-circle-link:hover {
+         background: #85373b;
+         color: #fff;
+         transform: translateX(-50%) scale(1.05);
+         }
+         @media (max-width: 480px) {
+         .sp-circle-link {
+         width: 160px;
+         font-size: 18px;
+         bottom: 10%;
+         }
+         }
+         /* Animations */
+         @keyframes blurFadeInOut {
+         0% {
+         opacity: 0;
+         text-shadow: 0px 0px 40px #fff;
+         transform: translateY(-50%) scale(1.3);
+         }
+         20%,
+         75% {
+         opacity: 1;
+         text-shadow: 0px 0px 1px #fff;
+         transform: translateY(-50%) scale(1);
+         }
+         100% {
+         opacity: 0;
+         text-shadow: 0px 0px 50px #fff;
+         transform: translateY(-50%) scale(0);
+         }
+         }
+         @keyframes blurFadeIn {
+         0% {
+         opacity: 0;
+         text-shadow: 0px 0px 40px #fff;
+         transform: scale(1.3);
+         }
+         50% {
+         opacity: 0.5;
+         text-shadow: 0px 0px 10px #fff;
+         transform: scale(1.1);
+         }
+         100% {
+         opacity: 1;
+         text-shadow: 0px 0px 1px #fff;
+         transform: scale(1);
+         }
+         }
+         @keyframes fadeInRotate {
+         0% {
+         opacity: 0;
+         transform: translateX(-50%) scale(0) rotate(360deg);
+         }
+         100% {
+         opacity: 1;
+         transform: translateX(-50%) scale(1) rotate(0deg);
+         }
+         }
+         /* Footer Styles */
+         footer {
+         position: fixed;
+         bottom: 0;
+         width: 100%;
+         padding: 1rem;
+         text-align: center;
+         font-size: 0.9rem;
+         line-height: 1.5;
+         background-color: rgba(0, 0, 0, 0.7);
+         z-index: 1001;
+         }
+         .disclaimer {
+         max-width: 1200px;
+         font-size: 1rem;
+         margin: 0 auto;
+         }
+         .footer-links {
+         margin-top: 0.5rem;
+         }
+         .footer-links a {
+         margin: 0 10px;
+         cursor: pointer;
+         }
+         /* Modal Styles */
+         .modal {
+         display: none;
+         position: fixed;
+         z-index: 1002;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         overflow: auto;
+         background-color: rgba(0, 0, 0, 0.7);
+         }
+         .modal-content {
+         background-color: #222;
+         color: #fff;
+         margin: 10% auto;
+         padding: 20px;
+         border: 1px solid #444;
+         border-radius: 8px;
+         width: 90%;
+         max-width: 600px;
+         position: relative;
+         }
+         @media (max-width: 768px) {
+         .modal-content {
+         margin: 20% auto;
+         width: 95%;
+         padding: 15px;
+         }
+         }
+         .close {
+         position: absolute;
+         right: 15px;
+         top: 10px;
+         color: #aaa;
+         font-size: 28px;
+         font-weight: bold;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         }
+         ffram .close:hover {
+         color: #fff;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+      <div class="sp-container">
+         <div class="sp-content">
+            <h2 class="frame-1">Know What Attackers See</h2>
+            <h2 class="frame-2">Continuously Assess Your External Risk</h2>
+            <h2 class="frame-3">Actionable Insights. No Blind Spots.</h2>
+            <h2 class="frame-4">VigilGuard</h2>
+            <h2 class="frame-5">
+               <span>Discover.</span>
+               <span>Prioritize.</span>
+               <span>Secure.</span>
+            </h2>
+            <h2 class="frame-6">
+               <span>VigilGuard — External Security Posture, Perfected.</span>
+            </h2>
+         </div>
+      </div>
+      <footer>
+         <div class="footer-links">
+            <a href="#" onclick="openModal('privacy')">Privacy</a>
+            | <a href="#" onclick="openModal('contact')">Copyright</a>
+            <!-- | <a href="/blog">Blog</a> -->
+         </div>
+      </footer>
+      <!-- Modal windows -->
+      <div id="privacyModal" class="modal">
+         <div class="modal-content">
+            <span class="close" onclick="closeModal('privacy')">&times;</span>
+            <h3>Privacy Policy</h3>
+            <br />
+            <p>
+               VigilGuard respects your privacy and does not collect personal information through cookies or similar technologies.  
+               This website operates without tracking or storing any data related to your browsing activity.
+            </p>
+            <p>
+               This page is hosted via <a href="https://docs.github.com/en/site-policy"><u>GitHub Pages</u></a>, which is governed by its own site policy.
+            </p>
+         </div>
+      </div>
+      <div id="contactModal" class="modal">
+         <div class="modal-content">
+            <span class="close" onclick="closeModal('contact')">&times;</span>
+            <h3>Copyright Notice</h3>
+            <br />
+            <p>© 2025 VigilGuard. All rights reserved.</p>
+            <p>
+               All content on this website—including text, graphics, logos, and images—is the property of VigilGuard LLC and is protected by copyright and other intellectual property laws.
+               Unauthorized use of any materials on this site may violate copyright, trademark, and other applicable laws.
+            </p>
+            <p>
+               The views and opinions expressed on this website are solely my own and do not reflect those of Synopsys, Inc. 
+               I am entirely responsible for the content and operation of this website unless otherwise stated. This site is not affiliated with or endorsed by Synopsys, Inc.
+            </p>
+         </div>
+      </div>
+      <script>
+         // Modal functionality
+         function openModal(type) {
+         	document.getElementById(type + "Modal").style.display = "block";
+         }
+         
+         function closeModal(type) {
+         	document.getElementById(type + "Modal").style.display = "none";
+         }
+         
+         // Close modal when clicking outside of it
+         window.onclick = function (event) {
+         	if (event.target.classList.contains("modal")) {
+         		event.target.style.display = "none";
+         	}
+         };
+      </script>
+   </body>
 </html>

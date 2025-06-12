@@ -8,7 +8,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
         <style>
-            /* Reset and Base Styles */
             * {
                 margin: 0;
                 padding: 0;
@@ -33,15 +32,12 @@
                 color: inherit;
             }
 
-            /* Container Styles */
             .container {
                 width: 100%;
                 position: relative;
-                overflow: hidden;
                 height: 100vh;
             }
 
-            /* Animation Container */
             .sp-container {
                 position: fixed;
                 top: 0;
@@ -65,7 +61,6 @@
                 align-items: center;
             }
 
-            /* Text Animation Styles */
             .sp-container h2 {
                 position: absolute;
                 top: 50%;
@@ -78,32 +73,36 @@
                 animation: blurFadeInOut 3s ease-in backwards;
             }
 
-            @media (max-width: 768px) {
-                .sp-container h2 {
-                    padding: 0 20px;
-                }
-            }
-
             .sp-container h2.frame-1 {
                 animation-delay: 0s;
             }
-
             .sp-container h2.frame-2 {
                 animation-delay: 3s;
             }
-
             .sp-container h2.frame-3 {
                 animation-delay: 6s;
             }
-
             .sp-container h2.frame-4 {
                 animation-delay: 9s;
             }
 
             .sp-container h2.frame-5 {
                 animation: none;
-                color: transparent;
-                text-shadow: 0px 0px 1px #fff;
+                text-shadow: 0 0 1px #fff;
+            }
+
+            .sp-container h2.frame-5 span {
+                animation: blurFadeIn 3s ease-in 12s backwards;
+                text-shadow: 0 0 1px #fff;
+                display: inline-block;
+                margin: 0 10px;
+            }
+
+            .sp-container h2.frame-5 .discover,
+            .sp-container h2.frame-5 .prioritize,
+            .sp-container h2.frame-5 .secure {
+                animation-delay: 13s;
+                font-size: 80%;
             }
 
             .logo {
@@ -115,62 +114,34 @@
                 font-weight: normal;
             }
 
-            .sp-container h2.frame-5 span {
-                animation: blurFadeIn 3s ease-in 12s backwards;
-                color: transparent;
-                text-shadow: 0px 0px 1px #ffffff;
-                display: inline-block;
-                margin: 0 10px;
-            }
-
-            .sp-container h2.frame-5 .discover {
-                animation: blurFadeIn 3s ease-in 13s backwards;
-                font-size: 80%;
-            }
-
-            .sp-container h2.frame-5 .prioritize {
-                animation: blurFadeIn 3s ease-in 13s backwards;
-                font-size: 80%;
-            }
-
-            .sp-container h2.frame-5 .secure {
-                animation: blurFadeIn 3s ease-in 13s backwards;
-                font-size: 80%;
-            }
-
             .sp-container h2.frame-6 {
                 animation: none;
-                color: transparent;
-                text-shadow: 0px 0px 1px #fff;
+                text-shadow: 0 0 1px #fff;
                 font-size: clamp(18px, 6vw, 80px);
             }
 
             .sp-container h2.frame-6 span {
                 animation: blurFadeIn 3s ease-in 16s backwards;
-                color: transparent;
-                text-shadow: 0px 0px 1px #fff;
+                text-shadow: 0 0 1px #fff;
                 display: inline-block;
                 margin-top: 400px;
             }
 
-            /* Animations */
             @keyframes blurFadeInOut {
                 0% {
                     opacity: 0;
-                    text-shadow: 0px 0px 40px #fff;
+                    text-shadow: 0 0 40px #fff;
                     transform: translateY(-50%) scale(1.3);
                 }
-
                 20%,
                 75% {
                     opacity: 1;
-                    text-shadow: 0px 0px 1px #fff;
+                    text-shadow: 0 0 1px #fff;
                     transform: translateY(-50%) scale(1);
                 }
-
                 100% {
                     opacity: 0;
-                    text-shadow: 0px 0px 50px #fff;
+                    text-shadow: 0 0 50px #fff;
                     transform: translateY(-50%) scale(0);
                 }
             }
@@ -178,36 +149,21 @@
             @keyframes blurFadeIn {
                 0% {
                     opacity: 0;
-                    text-shadow: 0px 0px 40px #fff;
+                    text-shadow: 0 0 40px #fff;
                     transform: scale(1.3);
                 }
-
                 50% {
                     opacity: 0.5;
-                    text-shadow: 0px 0px 10px #fff;
+                    text-shadow: 0 0 10px #fff;
                     transform: scale(1.1);
                 }
-
                 100% {
                     opacity: 1;
-                    text-shadow: 0px 0px 1px #fff;
+                    text-shadow: 0 0 1px #fff;
                     transform: scale(1);
                 }
             }
 
-            @keyframes fadeInRotate {
-                0% {
-                    opacity: 0;
-                    transform: translateX(-50%) scale(0) rotate(360deg);
-                }
-
-                100% {
-                    opacity: 1;
-                    transform: translateX(-50%) scale(1) rotate(0deg);
-                }
-            }
-
-            /* Footer Styles */
             footer {
                 position: fixed;
                 bottom: 0;
@@ -228,7 +184,8 @@
 
             .footer-links {
                 margin-top: 0.5rem;
-                color: #928888;
+                color: #959595;
+                font-size: 80%;
             }
 
             .footer-links a {
@@ -236,7 +193,6 @@
                 cursor: pointer;
             }
 
-            /* Modal Styles */
             .modal {
                 display: none;
                 position: fixed;
@@ -261,14 +217,6 @@
                 position: relative;
             }
 
-            @media (max-width: 768px) {
-                .modal-content {
-                    margin: 20% auto;
-                    width: 95%;
-                    padding: 15px;
-                }
-            }
-
             .close {
                 position: absolute;
                 right: 15px;
@@ -280,12 +228,23 @@
                 transition: all 0.2s ease;
             }
 
-            ffram .close:hover {
+            .close:hover {
                 color: #fff;
+            }
+
+            @media (max-width: 768px) {
+                .sp-container h2 {
+                    padding: 0 20px;
+                }
+
+                .modal-content {
+                    margin: 20% auto;
+                    width: 95%;
+                    padding: 15px;
+                }
             }
         </style>
     </head>
-
     <body>
         <div class="container">
             <div class="sp-container">
@@ -295,8 +254,7 @@
                     <h2 class="frame-3">Actionable Insights</h2>
                     <h2 class="frame-4">No Blind Spots</h2>
                     <h2 class="frame-5">
-                        <span class="logo">VigilGuard</span>
-                        <br />
+                        <span class="logo">VigilGuard</span><br />
                         <span class="discover">Discover.</span>
                         <span class="prioritize">Prioritize.</span>
                         <span class="secure">Secure.</span>
@@ -306,15 +264,15 @@
                     </h2>
                 </div>
             </div>
+
             <footer>
                 <div class="footer-links">
-                    <a href="#" onclick="openModal('privacy')">Privacy</a>
-                    | <a href="#">VigilGuard.com</a>
-                    | <a href="#" onclick="openModal('contact')">Copyright</a>
-                    <!-- | <a href="/blog">Blog</a> -->
+                    <a href="#" onclick="openModal('privacy')">Privacy</a> 
+                    | <a href="#" style="font-size: 120%">VigilGuard.com</a> |
+                    <a href="#" onclick="openModal('contact')">Copyright</a>
                 </div>
             </footer>
-            <!-- Modal windows -->
+
             <div id="privacyModal" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeModal('privacy')">&times;</span>
@@ -331,6 +289,7 @@
                     </p>
                 </div>
             </div>
+
             <div id="contactModal" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeModal('contact')">&times;</span>
@@ -339,18 +298,16 @@
                     <p>© 2025 VigilGuard. All rights reserved.</p>
                     <p>
                         All content on this website—including text, graphics, logos, and images—is the property of
-                        VigilGuard LLC and is protected by copyright and other intellectual property laws. Unauthorized
-                        use of any materials on this site may violate copyright, trademark, and other applicable laws.
+                        VigilGuard LLC and is protected by copyright and other intellectual property laws.
                     </p>
                     <p>
                         The views and opinions expressed on this website are solely my own and do not reflect those of
-                        Synopsys, Inc. I am entirely responsible for the content and operation of this website unless
-                        otherwise stated. This site is not affiliated with or endorsed by Synopsys, Inc.
+                        Synopsys, Inc. This site is not affiliated with or endorsed by Synopsys, Inc.
                     </p>
                 </div>
             </div>
+
             <script>
-                // Modal functionality
                 function openModal(type) {
                     document.getElementById(type + "Modal").style.display = "block";
                 }
@@ -358,7 +315,7 @@
                 function closeModal(type) {
                     document.getElementById(type + "Modal").style.display = "none";
                 }
-                // Close modal when clicking outside of it
+
                 window.onclick = function (event) {
                     if (event.target.classList.contains("modal")) {
                         event.target.style.display = "none";

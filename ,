@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>VigilGuard - External Security Posture, Perfected.</title>
+        <link rel="icon" href="https://vigilguard.com/icons/vigilguard.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Montserrat", sans-serif;
+                background: #000;
+                color: #fff;
+                overflow-x: hidden;
+                min-height: 100vh;
+            }
+
+            p {
+                font-size: smaller;
+                margin-bottom: 10px;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            u {
+                text-decoration: underline;
+                text-decoration-color: #9d9d9d;
+            }
+
+            .container {
+                width: 100%;
+                position: relative;
+                height: 100vh;
+            }
+
+            .sp-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+            }
+
+            .sp-content {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .sp-container h2 {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                text-align: center;
+                color: transparent;
+                font-size: clamp(40px, 8vw, 90px);
+                line-height: 1.2;
+                animation: blurFadeInOut 3s ease-in backwards;
+            }
+
+            .sp-container h2.frame-1 {
+                animation-delay: 0s;
+            }
+            .sp-container h2.frame-2 {
+                animation-delay: 3s;
+            }
+            .sp-container h2.frame-3 {
+                animation-delay: 6s;
+            }
+            .sp-container h2.frame-4 {
+                animation-delay: 9s;
+            }
+
+            .sp-container h2.frame-5 {
+                animation: none;
+                text-shadow: 0 0 1px #fff;
+            }
+
+            .sp-container h2.frame-5 span {
+                animation: blurFadeIn 3s ease-in 12s backwards;
+                text-shadow: 0 0 1px #fff;
+                display: inline-block;
+                margin: 0 10px;
+            }
+
+            .sp-container h2.frame-5 .discover,
+            .sp-container h2.frame-5 .prioritize,
+            .sp-container h2.frame-5 .secure {
+                animation-delay: 13s;
+                font-size: 80%;
+            }
+
+            .logo {
+                font-size: 120%;
+                background: linear-gradient(180deg, #ffe4e4, #5f5dff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: none !important;
+                display: inline-block;
+            }
+
+            .logo_img {
+                height: 96px;
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .tagline {
+                font-size: 60%;
+                font-weight: normal;
+            }
+
+            .sp-container h2.frame-6 {
+                animation: none;
+                text-shadow: 0 0 1px #fff;
+                font-size: clamp(18px, 6vw, 80px);
+            }
+
+            .sp-container h2.frame-6 span {
+                animation: blurFadeIn 3s ease-in 16s backwards;
+                text-shadow: 0 0 1px #fff;
+                display: inline-block;
+                margin-top: 400px;
+            }
+
+            @keyframes blurFadeInOut {
+                0% {
+                    opacity: 0;
+                    text-shadow: 0 0 40px #fff;
+                    transform: translateY(-50%) scale(1.3);
+                }
+                20%,
+                75% {
+                    opacity: 1;
+                    text-shadow: 0 0 1px #fff;
+                    transform: translateY(-50%) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    text-shadow: 0 0 50px #fff;
+                    transform: translateY(-50%) scale(0);
+                }
+            }
+
+            @keyframes blurFadeIn {
+                0% {
+                    opacity: 0;
+                    text-shadow: 0 0 40px #fff;
+                    transform: scale(1.3);
+                }
+                50% {
+                    opacity: 0.5;
+                    text-shadow: 0 0 10px #fff;
+                    transform: scale(1.1);
+                }
+                100% {
+                    opacity: 1;
+                    text-shadow: 0 0 1px #fff;
+                    transform: scale(1);
+                }
+            }
+
+            footer {
+                position: fixed;
+                bottom: 10px;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 1001;
+            }
+
+            .disclaimer {
+                max-width: 1200px;
+                font-size: 1rem;
+                margin: 0 auto;
+            }
+
+            .footer-links {
+                margin-top: 0.2rem;
+                color: #c6c5c5;
+                font-size: 75%;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1002;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .modal-content {
+                background-color: #222;
+                color: #fff;
+                margin: 10% auto;
+                padding: 20px;
+                border: 1px solid #444;
+                border-radius: 8px;
+                width: 90%;
+                max-width: 600px;
+                position: relative;
+                line-height: 1.5;
+            }
+
+            .social-icon {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                vertical-align: top;
+                margin: 0 10px 0 0;
+            }
+
+            .social-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+
+            .close {
+                position: absolute;
+                right: 15px;
+                top: 10px;
+                color: #aaa;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .close:hover {
+                color: #fff;
+            }
+
+            @media (max-width: 767px) {
+                .sp-container h2 {
+                    padding: 0 20px;
+                }
+                .modal-content {
+                    margin: 20% auto;
+                    width: 95%;
+                    padding: 15px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sp-container">
+                <div class="sp-content">
+                    <img src="https://vigilguard.com/icons/vigilguard.svg" class="logo_img" />
+                    <h2 class="frame-1">See What <br />Hackers See</h2>
+                    <h2 class="frame-2">Continuously <br />Assess External Risk</h2>
+                    <h2 class="frame-3">Actionable Insights</h2>
+                    <h2 class="frame-4">No Blind Spots</h2>
+                    <h2 class="frame-5">
+                        <span class="logo">VigilGuard</span><br />
+                        <span class="discover">Discover.</span>
+                        <span class="prioritize">Prioritize.</span>
+                        <span class="secure">Secure.</span>
+                    </h2>
+                    <h2 class="frame-6">
+                        <span class="tagline">External Security Posture, Perfected.</span>
+                    </h2>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-links">
+                    <a href="#" onclick="openModal('blog')">Blog</a> |
+                    <a href="#" onclick="openModal('privacy')">Privacy</a> |
+                    <a href="#" onclick="openModal('contact')">Copyright</a>
+                    <div style="text-align: center; font-family: Montserrat, sans-serif">
+                        <span style="color: #ba93f9; font-size: 150%; vertical-align: middle">©</span>
+                        <span style="color: #ba93f9; font-size: 100%; vertical-align: middle">VigilGuard</span>
+                    </div>
+                </div>
+            </footer>
+
+            <div id="blogModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('blog')">&times;</span>
+                    <h3><img src="https://vigilguard.com/icons/vigilguard.svg" class="social-icon" />Blog / Info</h3>
+                    <br />
+                    <p>
+                        <strong>VigilGuard</strong> in very early thinking mode, shaping ideas, exploring challenges,
+                        and laying the foundation for a platform that will help organizations assess and strengthen
+                        their external security posture.
+                    </p>
+                    <p>
+                        The idea is to provide guidance around outside-in view of a company’s public-facing risks
+                        VigilGuard will eventually offer automation across technical, dark-web scans, and organizational
+                        areas, helping you discover issues, prioritize fixes, and secure your environment.
+                    </p>
+                    <p>
+                        "External Security Posture, Perfected" is our tagline !! If you're curious, want to contribute
+                        ideas, or just want to follow along as we build, email us at info@vigilguard.
+                    </p>
+                </div>
+            </div>
+
+            <div id="privacyModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('privacy')">&times;</span>
+                    <h3><img src="https://vigilguard.com/icons/vigilguard.svg" class="social-icon" />Privacy Policy</h3>
+                    <br />
+                    <p>
+                        We, at <strong>VigilGuard</strong>, are committed to protecting your privacy. We do not use
+                        cookies, tracking pixels, analytics tools, or any similar technologies that collect, monitor, or
+                        store information about your browsing activity. No personal data—such is collected or retained
+                        by us when you visit this site.
+                    </p>
+                    <p>
+                        This website is hosted through GitHub Pages, a static site hosting service provided by GitHub.
+                        While we do not engage in any data collection, GitHub may collect data as part of its standard
+                        hosting infrastructure For more information about GitHub’s data practices, please refer to the
+                        <a href="https://docs.github.com/en/site-policy/privacy-policies/"
+                            ><u>GitHub Privacy Statement</u></a
+                        >.
+                    </p>
+                    <p>
+                        If you have any questions or concerns about this privacy statement or the way your information
+                        is handled, feel free to contact us at privacy@vigilguard.
+                    </p>
+                </div>
+            </div>
+
+            <div id="contactModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('contact')">&times;</span>
+                    <h3>
+                        <img src="https://vigilguard.com/icons/vigilguard.svg" class="social-icon" />Copyright Notice
+                    </h3>
+                    <br />
+                    <p>© 2025 <strong>VigilGuard</strong>. All rights reserved.</p>
+                    <p>
+                        All content on this website—including text, graphics, logos, and images—is the property of
+                        VigilGuard LLC and is protected by copyright and other intellectual property laws.
+                    </p>
+                    <p>
+                        The views and opinions expressed on this website are solely my own and do not reflect those of
+                        Synopsys, Inc or anyone else. This site is not affiliated with or endorsed by Synopsys, Inc.
+                    </p>
+
+                    <h3>Social</h3>
+                    <p>
+                        <span class="social-icon">
+                            <img src="https://cdn.simpleicons.org/Mail.ru/ffffff" alt="X" class="white-icon" />
+                        </span>
+                        <u>info</u> or <u>privacy</u> @vigilguard.com
+                    </p>
+                    <p>
+                        <a href="https://bsky.app/profile/VigilGuardCom.bsky.social" class="white-icon">
+                            <span class="social-icon">
+                                <img src="https://cdn.simpleicons.org/bluesky/ffffff" alt="Bluesky" />
+                            </span>
+                            @<u>VigilGuardCom.bsky.social</u>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://x.com/VigilGuardCom" class="white-icon">
+                            <span class="social-icon">
+                                <img src="https://cdn.simpleicons.org/X/ffffff" alt="X" class="white-icon" />
+                            </span>
+                            @<u>VigilGuardCom</u>
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <script>
+                function openModal(type) {
+                    document.getElementById(type + "Modal").style.display = "block";
+                }
+
+                function closeModal(type) {
+                    document.getElementById(type + "Modal").style.display = "none";
+                }
+
+                window.onclick = function (event) {
+                    if (event.target.classList.contains("modal")) {
+                        event.target.style.display = "none";
+                    }
+                };
+            </script>
+        </div>
+    </body>
+</html>
